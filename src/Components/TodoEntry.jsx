@@ -1,11 +1,10 @@
 import React from 'react'
 
-const TodoEntry = () => {
-  return (
-    <div>
-      <h1>Todo Entry</h1>
-    </div>
-  )
+const TodoEntry = ({ handleSubmit, handleChange, newTodo }) => {
+  return <form onSubmit={handleSubmit}>
+      <input id="newTodo" onChange={handleChange} value={newTodo} placeholder="Enter a new ToDo item!" type="text" />
+      <button type="submit">Add New Item</button>
+    </form>
 }
 
 export default TodoEntry

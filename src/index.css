@@ -21,3 +21,10 @@ body {
   background-color: #ECEFF1;
   color: #333;
 }
+
+.app {
+  background: #46529D;
+  max-width: 35rem;
+  margin: 0 auto;
+  color: #fff;
+}
