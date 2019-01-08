@@ -1,18 +1,26 @@
 import React from 'react'
 
-const TodoItem = ({todos, removeItem}) => 
-  <div>
-      {todos && todos.map(item => {
-        return(
-          <div key={item.title}>
-            {item.title}
-            <i class="fas fa-times" onClick={() => removeItem(item)}></i>
-            <i class="fas fa-info-circle"></i>
-            <i class="fas fa-check"></i>
+const TodoItem = ({ todos, onDeleteTodo, onCompleteTodo }) => (
+  <div className="list-container">
+    {todos &&
+      todos.map(item => {
+        return (
+          <div className="list-item">
+            <span>
+              <div className="item-text" key={item.title}>
+                {item.title}
+                <i
+                  className="fas fa-times"
+                  onClick={() => onDeleteTodo(item.id)}
+                />
+                <i className="fas fa-info-circle" />
+                <i onClick={() => onCompleteTodo(item)} />
+              </div>
+            </span>
           </div>
         )
       })}
-    </div>
-
+  </div>
+)
 
 export default TodoItem
