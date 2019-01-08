@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import 'materialize-css/dist/css/materialize.min.css'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
@@ -12,12 +11,12 @@ import { rootReducer } from './Reducers/rootReducer'
 const initialState = {
   todos: [
     {
-      title: 'redux-test',
+      title: '1st Random Item',
       id: 0,
       isComplete: false
     }, 
     {
-      title: 'redux-heavy',
+      title: '2nd Random Item',
       id: 1,
       isComplete: false
     }

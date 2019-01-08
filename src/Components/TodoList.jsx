@@ -3,16 +3,9 @@ import { connect } from 'react-redux'
 import TodoItem from './TodoItem'
 import TodoEntry from './TodoEntry'
 import { deleteTodo, addTodo, completeTodo } from '../Actions/todoActions'
+import hero from '../images/pexels-photo.jpg'
 
 export class TodoList extends Component {
-  // handleSubmit = event => {
-  //   event.preventDefault()
-  //   this.setState({
-  //     newTodo: '',
-  //     todos: [...this.state.todos, { title: this.state.newTodo }]
-  //   })
-  // }
-
   constructor(props) {
     super(props)
 
@@ -29,13 +22,31 @@ export class TodoList extends Component {
   handleChange = event =>
     this.setState({ [event.target.id]: event.target.value })
 
+  getTime = () => {
+    const time = new Date().getTime()
+    const date = new Date(time).toString().split(' ') //?
+    let returnArray = []
+    date.map((item, idx) => idx <= 3 ? returnArray.push(item) : null)
+    return returnArray.join(' ')
+  }
+
   render() {
     const { todos, onDeleteTodo, addTodo, onCompleteTodo } = this.props
     return <div className="app">
-        <h1>Todo List</h1>
-        <a class="waves-effect waves-light btn">
-          <i class="material-icons left">cloud</i>button
-        </a>
+        <div className="image-container">
+          <img src={hero} />
+          <div className="hero-inner-container-left">
+            <div className="menu-bars">
+              <i class="fas fa-bars" />
+            </div>
+            <div className="hero-text">Your Todo Items</div>
+            <div className="date-time">{this.getTime()}</div>
+            <div className="total-items-container">
+              {todos.length} <span>to complete</span>
+            </div>
+          </div>
+          <div className="hero-inner-container-right" />
+        </div>
         <TodoItem todos={todos} onDeleteTodo={onDeleteTodo} onCompleteTodo={onCompleteTodo} />
         <TodoEntry addTodo={addTodo} handleSubmit={this.handleSubmit} handleChange={this.handleChange} newTodo={this.state.newTodo} />
       </div>
