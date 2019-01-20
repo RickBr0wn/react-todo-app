@@ -6,17 +6,17 @@ const TodoItem = ({ todos, onDeleteTodo, onCompleteTodo }) => (
       todos.map(item => {
         return (
           <div className="list-item">
-            <span>
-              <div className="item-text" key={item.title}>
-                {item.title}
-                <i
-                  className="fas fa-times"
-                  onClick={() => onDeleteTodo(item.id)}
-                />
-                <i className="fas fa-info-circle" />
-                <i onClick={() => onCompleteTodo(item)} />
-              </div>
-            </span>
+            <div className="item-text" key={item.title}>
+              {item.title}
+            </div>
+            <div className="button-container">
+              <i className="fas fa-info-circle" />
+              <i
+                className="fas fa-times"
+                onClick={() => onDeleteTodo(item.id)}
+              />
+              <i onClick={() => onCompleteTodo(item)} />
+            </div>
           </div>
         )
       })}

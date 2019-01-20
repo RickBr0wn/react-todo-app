@@ -6,12 +6,8 @@ import { deleteTodo, addTodo, completeTodo } from '../Actions/todoActions'
 import hero from '../images/pexels-photo.jpg'
 
 export class TodoList extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      newTodo: '',
-    }
+  state = {
+    newTodo: '',
   }
 
   handleSubmit = event => {
@@ -26,13 +22,14 @@ export class TodoList extends Component {
     const time = new Date().getTime()
     const date = new Date(time).toString().split(' ') //?
     let returnArray = []
-    date.map((item, idx) => idx <= 3 ? returnArray.push(item) : null)
+    date.map((item, idx) => (idx <= 3 ? returnArray.push(item) : null))
     return returnArray.join(' ')
   }
 
   render() {
-    const { todos, onDeleteTodo, addTodo, onCompleteTodo } = this.props
-    return <div className="app">
+    const { todos, onDeleteTodo, onAddTodo, onCompleteTodo } = this.props
+    return (
+      <div className="app">
         <div className="image-container">
           <img src={hero} />
           <div className="hero-inner-container-left">
@@ -47,9 +44,19 @@ export class TodoList extends Component {
           </div>
           <div className="hero-inner-container-right" />
         </div>
-        <TodoItem todos={todos} onDeleteTodo={onDeleteTodo} onCompleteTodo={onCompleteTodo} />
-        <TodoEntry addTodo={addTodo} handleSubmit={this.handleSubmit} handleChange={this.handleChange} newTodo={this.state.newTodo} />
+        <TodoItem
+          todos={todos}
+          onDeleteTodo={onDeleteTodo}
+          onCompleteTodo={onCompleteTodo}
+        />
+        <TodoEntry
+          addTodo={onAddTodo}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          newTodo={this.state.newTodo}
+        />
       </div>
+    )
   }
 }
 
